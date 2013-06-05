@@ -26,10 +26,76 @@ Author URI: 	http://commareus.com
  * **********************************************************************
  */
 jQuery(function($){
-	$('#post-order-of-oz-listing ul').sortable({
-		placeholder: 	'sortable-placeholder',
+	var $sortable 	= $('#post-order-of-oz-listing ul');
+	var $form 		= $('#post-order-of-oz-listing');
+	var $posts 		= $('.post-item', $form);
+
+	//=============================================================================
+	// Position Elements on load
+	//=============================================================================
+	$posts.each(function(){
+		var $this 		= $(this);
+		var targetID 	= $('> .post-item-handle > .post-parent', $this).val();
+
+		if(targetID != 0){
+			var $target = $('input.post-id[value="' + targetID + '"]');
+			$this.appendTo($target.parent().parent().children('ul'));
+		}
+	})
+
+	//=============================================================================
+	// Update children count
+	//=============================================================================
+	var update_post_count = function(){
+    	$posts.each(function(){
+    		var $this = $(this);
+    		var $counter = $('> .post-item-handle > .item-title > .post-count', $this);
+    		var count = $('> ul > li', $this).length;
+
+    		if(count){
+    			$counter.text(' (' + count + ')');
+    			$('> .post-item-handle > .item-title > .tree-toggle', $this).show();
+    		} else {
+    			$counter.text('');
+    			$('> .post-item-handle > .item-title > .tree-toggle', $this).hide();
+    		}
+    	});
+    	console.log('updated');
+    };
+
+	//=============================================================================
+	// Initialize the sortables
+	//=============================================================================
+	$sortable.disableSelection();
+	$sortable.sortable({
+		placeholder: 	'post-order-of-oz-listing-placeholder',
 		connectWith: 	'#post-order-of-oz-listing ul',
 	    tolerance: 		'intersect',
+
+	    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+		// Update the post count
+		//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	    update: update_post_count
 	});
-	$('#post-order-of-oz-listing ul').disableSelection();
+	update_post_count();
+
+	//=============================================================================
+	// Update post parents
+	//=============================================================================
+	$form.submit(function(e){
+		$posts.each(function(){
+			var $this 		= $(this);
+			var parentID 	= $this.parent().parent().find('> .post-item-handle > .post-id').val();
+			$('> .post-item-handle > .post-parent', $this).val(parentID);
+		});
+	});
+
+	//=============================================================================
+	// Toggle the tree open/close
+	//=============================================================================
+	$('.tree-toggle').click(function(){
+		var $this = $(this);
+		$this.toggleClass('opened');
+		$this.closest('.post-item').children('ul').slideToggle();
+	})
 });

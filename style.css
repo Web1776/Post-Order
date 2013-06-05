@@ -32,21 +32,51 @@ Author URI: 	http://commareus.com
   border: 1px solid #e0e0e0;
   margin: 40px 0;
   margin-bottom: 0;
-  padding: 20px; }
-  #post-order-of-oz-listing .menu-item-transport {
-    display: block;
-    position: relative;
-    margin: 0;
-    min-height: 10px; }
-  #post-order-of-oz-listing > ul {
-    padding-bottom: 50px; }
+  padding: 20px;
+  position: relative; }
   #post-order-of-oz-listing ul {
-    padding-left: 40px; }
+    padding-left: 20px;
+    position: relative;
+    padding-bottom: 20px; }
+    #post-order-of-oz-listing ul > li:first-child {
+      padding-top: 14px; }
+    #post-order-of-oz-listing ul > li:last-child {
+      padding-bottom: 0; }
   #post-order-of-oz-listing li {
-    margin: 0;
-    margin-top: 10px;
-    margin-bottom: 10px; }
-    #post-order-of-oz-listing li ul {
-      padding-top: 10px; }
-      #post-order-of-oz-listing li ul li {
-        margin-top: 20px; }
+    position: relative;
+    min-height: 30px;
+    border-left: 1px dotted #aaa; }
+    #post-order-of-oz-listing li .tree-toggle {
+      display: none; }
+  #post-order-of-oz-listing .post-count {
+    color: #999; }
+  #post-order-of-oz-listing .tree-toggle {
+    display: inline;
+    position: absolute;
+    left: -5px;
+    cursor: pointer; }
+    #post-order-of-oz-listing .tree-toggle .close {
+      display: inline; }
+    #post-order-of-oz-listing .tree-toggle .open {
+      display: none; }
+    #post-order-of-oz-listing .tree-toggle.opened .close {
+      display: none; }
+    #post-order-of-oz-listing .tree-toggle.opened .open {
+      display: inline; }
+  #post-order-of-oz-listing .item-title {
+    background: url(post-icon.png) no-repeat;
+    padding-left: 36px;
+    height: 20px;
+    display: block; }
+  #post-order-of-oz-listing .post-item-handle {
+    cursor: move; }
+  #post-order-of-oz-listing .post-order-of-oz-listing-placeholder {
+    position: relative;
+    background: #efefef;
+    border: 1px dashed #bfbfbf;
+    height: 18px !important;
+    display: block;
+    width: 400px;
+    padding: 0 !important;
+    min-height: 0 !important;
+    margin: 10px 0 !important; }
