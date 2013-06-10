@@ -27,25 +27,6 @@ Author URI: 	http://commareus.com
  */
 
 //###########################################################################
-// START TEST
-//###########################################################################
-add_action('init', 'oz_register_post_type');
-function oz_register_post_type(){
-	register_post_type('oz_cpt', array(
-		'label'			=> 'Test CPT',
-		'public'		=> true,
-		'hierarchical' 	=> true,
-		'supports'		=> array('page-attributes', 'editor', 'title')
-	));
-}
-//###########################################################################
-// END TEST
-//###########################################################################
-
-
-
-
-//###########################################################################
 // Namespace our Plugin
 //###########################################################################
 $orbitScoreTable = new Post_Order_of_Oz();
