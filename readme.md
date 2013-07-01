@@ -1,6 +1,6 @@
 # Post Order
 
-**Version**: 0.1.0  
+**Version**: 1.0.0  
 **Requires at least**: ?  
 **Tested up to**: 3.5.1  
 **License**: GPLv2  

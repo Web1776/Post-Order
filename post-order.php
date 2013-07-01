@@ -2,7 +2,7 @@
 Plugin Name: 	Post Order
 Description: 	Drag and drop your [custom] Posts into perfect order.
 Version: 		1.0.0
-Author: 		CommAREus
+Author: 		Carlos @ CommAREus
 Author URI: 	http://commareus.com
 */
 
@@ -25,11 +25,16 @@ Author URI: 	http://commareus.com
  * GNU General Public License for more details.
  * **********************************************************************
  */
+/*
+	TO DO
+	======
+	* 
+*/
 
 //###########################################################################
 // Namespace our Plugin
 //###########################################################################
-$orbitScoreTable = new Post_Order_of_Oz();
+$Post_Order_of_Oz = new Post_Order_of_Oz();
 class Post_Order_of_Oz{
 	static protected $cpt;
 	static protected $privelages;
@@ -235,6 +240,15 @@ class Post_Order_of_Oz{
 				</ul>
 				<input type="submit" class="button button-primary" value="<?php _e('Update Post Order'); ?> ">
 			</form>
+
+			<?php //=======================================================================
+			// Add JavaScript variables
+			//========================================================================== ?>
+			<script>
+				postOrder = {
+					hierarchical: <?php echo is_post_type_hierarchical(self::$cpt->name) ? 'true' : 'false' ?>
+				}
+			</script>
 		</div>
 	<?php }
 

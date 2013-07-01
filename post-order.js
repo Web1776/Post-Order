@@ -60,7 +60,6 @@ jQuery(function($){
     			$('> .post-item-handle > .item-title > .tree-toggle', $this).hide();
     		}
     	});
-    	console.log('updated');
     };
 
 	//=============================================================================
@@ -69,7 +68,7 @@ jQuery(function($){
 	$sortable.disableSelection();
 	$sortable.sortable({
 		placeholder: 	'post-order-of-oz-listing-placeholder',
-		connectWith: 	'#post-order-of-oz-listing ul',
+		connectWith: 	postOrder.hierarchical ? '#post-order-of-oz-listing ul' : '#post-order-of-oz-listing > ul > li',
 	    tolerance: 		'intersect',
 
 	    //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
