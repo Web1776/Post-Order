@@ -178,8 +178,7 @@ class Post_Order_of_Oz{
 			//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 			if(!current_user_can('manage_options'))
 				return '<div class="error"><br>'.__('Sorry, you don\'t have the required privileges to save').'<br><br></div>';
-
-			if(!wp_verify_nonce(isset($_POST['_post-order-blacklist']), 'save-post-order'))
+			if(!wp_verify_nonce($_POST['_post-order-blacklist'], 'save-blacklist'))
 				return '<div class="error"><br>'.__('Incorrect credentials sent, please try again.').'<br><br></div>';
 
 			//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -218,11 +217,11 @@ class Post_Order_of_Oz{
 					<?php //=======================================================================
 						// Display all CPT Posts
 						//========================================================================== 
-						//echo '<pre>', print_r(self::$cpt), '</pre>';
 						$posts = get_posts(array(
 							'post_type'	=> self::$cpt->name,
 							'orderby'	=> 'menu_order',
-							'order'		=> 'ASC'
+							'order'		=> 'ASC',
+							'posts_per_page' => -1
 						));
 						foreach($posts as $post){
 							echo '<li class="post-item">',
@@ -263,7 +262,7 @@ class Post_Order_of_Oz{
 			if(!current_user_can('manage_options'))
 				return '<div class="error"><br>'.__('Sorry, you don\'t have the required privileges to save').'<br><br></div>';
 
-			if(!isset($_POST['_post-order']) || !wp_verify_nonce(isset($_POST['_post-order']), 'save-post-order'))
+			if(!wp_verify_nonce($_POST['_post-order'], 'save-post-order'))
 				return '<div class="error"><br>'.__('Incorrect credentials sent, please try again.').'<br><br></div>';
 
 
